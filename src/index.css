@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* Ledger & Brass palette */
+  --color-paper: #E7E9E2;
+  --color-paper-dim: #DBDECF;
+  --color-ink: #10312B;
+  --color-ink-soft: #2B4A43;
+  --color-brass: #B8862B;
+  --color-brass-bright: #D6A64B;
+  --color-clay: #9C4A2E;
+
+  --color-night: #0B1F1C;
+  --color-night-surface: #122B26;
+  --color-night-surface-2: #17352F;
+  --color-mist: #DDE4DD;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: var(--color-night);
+  color: var(--color-mist);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+}
